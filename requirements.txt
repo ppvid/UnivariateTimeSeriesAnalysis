@@ -1,0 +1,9 @@
+streamlit>=1.32.0
+pandas>=2.0.0
+numpy>=1.24.0
+plotly>=5.18.0
+sktime>=0.26.0
+statsmodels>=0.14.0
+pmdarima>=2.0.4
+chardet>=5.0.0
+scikit-posthocs>=0.8.0
