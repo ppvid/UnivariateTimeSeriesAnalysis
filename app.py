@@ -26,8 +26,8 @@ from modules.evaluator import (
     get_best_model, render_metrics_cards,
 )
 
-st.set_page_config(page_title="시계열 예측 대시보드", layout="wide")
-st.title("시계열 예측 대시보드")
+st.set_page_config(page_title="단변량 시계열 예측 대시보드", layout="wide")
+st.title("단변량 시계열 예측 대시보드")
 st.caption("CSV 파일을 업로드하면 자동으로 분석·전처리·예측을 수행합니다.")
 
 if "last_run" not in st.session_state:
