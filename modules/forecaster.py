@@ -146,11 +146,12 @@ def run_forecast(
         model_info = {}
         if MODEL_REGISTRY[model_label] == "autoarima":
             try:
-                fitted = model._fitted_forecaster
-                model_info["order"]          = fitted.order          # 수정: 속성으로
-                model_info["seasonal_order"] = fitted.seasonal_order
-                model_info["aic"]            = round(float(fitted.aic), 2)   # 수정: () 제거
-                model_info["bic"]            = round(float(fitted.bic), 2)   # 수정: () 제거
+                fp = model.get_fitted_params()
+                model_info["order"]          = fp.get("order", "?")
+                model_info["seasonal_order"] = fp.get("seasonal_order", "?")
+                model_info["aic"]            = round(float(fp["aic"]), 2) if "aic" in fp else "N/A"
+                model_info["bic"]            = round(float(fp["bic"]), 2) if "bic" in fp else "N/A"
+                model_info["aicc"]           = round(float(fp["aicc"]), 2) if "aicc" in fp else "N/A"
             except Exception:
                 pass
 

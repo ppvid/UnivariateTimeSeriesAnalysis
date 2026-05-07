@@ -391,8 +391,13 @@ with tab3:
                 if res.get("model_info"):
                     info  = res["model_info"]
                     order = info.get("order", "?")
-                    st.info(f"AutoARIMA — order: `{order}`, seasonal: `{info.get('seasonal_order','?')}`, "
-                            f"AIC: `{info.get('aic','N/A')}`")
+                    sorder = info.get("seasonal_order", "?")
+                    st.info(
+                        f"**AutoARIMA 선택 파라미터**\n\n"
+                        f"- ARIMA order (p, d, q): `{order}`\n"
+                        f"- Seasonal order (P, D, Q, s): `{sorder}`\n"
+                        f"- AIC: `{info.get('aic', 'N/A')}` | AICc: `{info.get('aicc', 'N/A')}` | BIC: `{info.get('bic', 'N/A')}`"
+                    )
                     if order and len(order) >= 2 and order[1] > 0:
                         st.caption(f"d={order[1]} 적용: 비정상 데이터를 {order[1]}번 차분하여 학습했습니다.")
 
